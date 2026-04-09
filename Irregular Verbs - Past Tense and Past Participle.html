@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Irregular Verbs - Past Tense and Past Participle</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .verb-card {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .verb-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        .form {
+            padding: 12px;
+            border-radius: 6px;
+            margin: 8px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+        .base-form {
+            background-color: #e0f2fe;
+            border-left: 4px solid #0284c7;
+        }
+        .past-tense {
+            background-color: #fef3c7;
+            border-left: 4px solid #f59e0b;
+        }
+        .past-participle {
+            background-color: #dcfce7;
+            border-left: 4px solid #16a34a;
+        }
+        .verb-text {
+            flex: 1;
+        }
+        .pronunciation-btn {
+            background-color: rgba(0,0,0,0.1);
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.2s;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        .pronunciation-btn:hover {
+            background-color: rgba(0,0,0,0.2);
+        }
+        .pronunciation-btn:active {
+            transform: scale(0.95);
+        }
+        .highlight { color: #2563eb; font-weight: bold; }
+        .time-ref { color: #dc2626; font-weight: bold; }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen py-8">
+    <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-gray-800 mb-2">Irregular Verbs Reference</h1>
+            <p class="text-gray-600 text-lg">过去式和过去分词 (Past Tense & Past Participle)</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="verbGrid"></div>
+
+        <!-- Study Tips -->
+        <div class="mt-12 bg-white rounded-lg shadow-md p-8">
+            <h3 class="text-2xl font-bold text-gray-800 mb-6">学习提示 (Study Tips)</h3>
+
+            <!-- Past Tense Usage -->
+            <div class="mb-8">
+                <h4 class="text-lg font-bold text-amber-700 mb-3">🟡 过去式 (Past Tense) — 一般过去时</h4>
+                <p class="text-gray-700 mb-3">用于描述<strong>过去某个具体时间</strong>发生的动作，强调"过去做了什么"。</p>
+                <div class="bg-amber-50 p-4 rounded-lg space-y-2">
+                    <p class="text-gray-700">I <span class="highlight">read</span> the book <span class="time-ref">last year</span>. (我去年读了这本书)</p>
+                    <p class="text-gray-700">She <span class="highlight">broke</span> the cup <span class="time-ref">yesterday</span>. (她昨天打破了杯子)</p>
+                    <p class="text-gray-700">They <span class="highlight">sent</span> the email <span class="time-ref">this morning</span>. (他们今早发了邮件)</p>
+                    <p class="text-gray-700">He <span class="highlight">went</span> to school <span class="time-ref">two days ago</span>. (他两天前去了学校)</p>
+                </div>
+            </div>
+
+            <!-- Past Participle Usage -->
+            <div class="mb-8 border-l-4 border-green-500 pl-6">
+                <h4 class="text-lg font-bold text-green-700 mb-3">🟢 过去分词 (Past Participle) — 用于完成时</h4>
+                <p class="text-gray-700 mb-4">过去分词的核心用法：<strong>和一个时间点相比，动作已经结束。</strong></p>
+
+                <div class="mb-6 bg-green-50 p-4 rounded-lg">
+                    <p class="text-gray-700 font-bold mb-2">4️⃣ 过去完成 (had + 过去分词)</p>
+                    <p class="text-gray-700 mb-2">和一个时间点相比，动作已经结束。这个时间点：<span class="time-ref">过去</span></p>
+                    <div class="bg-white p-3 rounded border-l-4 border-green-400">
+                        <p class="text-gray-800 text-lg">I <span class="highlight">had finished</span> the work <span class="time-ref">before 6:00 yesterday</span>.</p>
+                        <p class="text-gray-500 text-sm">（昨天6点之前，我已经完成了工作）</p>
+                    </div>
+                </div>
+
+                <div class="mb-6 bg-green-50 p-4 rounded-lg">
+                    <p class="text-gray-700 font-bold mb-2">5️⃣ 现在完成 (have + 过去分词)</p>
+                    <p class="text-gray-700 mb-2">和一个时间点相比，动作已经结束。这个时间点：<span class="time-ref">现在</span></p>
+                    <div class="bg-white p-3 rounded border-l-4 border-blue-400">
+                        <p class="text-gray-800 text-lg">I <span class="highlight">have finished</span> the work <span class="time-ref">by now</span>.</p>
+                        <p class="text-gray-500 text-sm">（到现在为止，我已经完成了工作）</p>
+                    </div>
+                </div>
+
+                <div class="mb-4 bg-green-50 p-4 rounded-lg">
+                    <p class="text-gray-700 font-bold mb-2">6️⃣ 将来完成 (will have + 过去分词)</p>
+                    <p class="text-gray-700 mb-2">和一个时间点相比，动作已经结束。这个时间点：<span class="time-ref">将来</span></p>
+                    <div class="bg-white p-3 rounded border-l-4 border-purple-400">
+                        <p class="text-gray-800 text-lg">I <span class="highlight">will have sent</span> you the file <span class="time-ref">before getting off work</span>.</p>
+                        <p class="text-gray-500 text-sm">（下班之前，我将已经把文件发给你了）</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-blue-50 p-4 rounded-lg">
+                <p class="text-gray-700"><strong>💡 记忆方法：</strong> 过去式和过去分词的区别——过去式单独使用（I <strong>went</strong>），过去分词必须跟 had/have/will have 搭配（I <strong>have gone</strong>）。有些动词两者相同（send → sent → sent），有些不同（go → went → gone）。</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const verbs = [
+            { base: 'read', past: 'read', pp: 'read', basePron: 'reed', pastPron: 'red', ppPron: 'red' },
+            { base: 'break', past: 'broke', pp: 'broken', basePron: 'break', pastPron: 'broke', ppPron: 'broken' },
+            { base: 'send', past: 'sent', pp: 'sent', basePron: 'send', pastPron: 'sent', ppPron: 'sent' },
+            { base: 'know', past: 'knew', pp: 'known', basePron: 'know', pastPron: 'new', ppPron: 'known' },
+            { base: 'give', past: 'gave', pp: 'given', basePron: 'give', pastPron: 'gave', ppPron: 'given' },
+            { base: 'run', past: 'ran', pp: 'run', basePron: 'run', pastPron: 'ran', ppPron: 'run' },
+            { base: 'have', past: 'had', pp: 'had', basePron: 'have', pastPron: 'had', ppPron: 'had' },
+            { base: 'go', past: 'went', pp: 'gone', basePron: 'go', pastPron: 'went', ppPron: 'gone' },
+            { base: 'come', past: 'came', pp: 'come', basePron: 'come', pastPron: 'came', ppPron: 'come' },
+            { base: 'take', past: 'took', pp: 'taken', basePron: 'take', pastPron: 'took', ppPron: 'taken' },
+            { base: 'see', past: 'saw', pp: 'seen', basePron: 'see', pastPron: 'saw', ppPron: 'seen' },
+            { base: 'say', past: 'said', pp: 'said', basePron: 'say', pastPron: 'said', ppPron: 'said' },
+            { base: 'do', past: 'did', pp: 'done', basePron: 'do', pastPron: 'did', ppPron: 'done' },
+            { base: 'get', past: 'got', pp: 'got', basePron: 'get', pastPron: 'got', ppPron: 'got' },
+            { base: 'make', past: 'made', pp: 'made', basePron: 'make', pastPron: 'made', ppPron: 'made' },
+            { base: 'write', past: 'wrote', pp: 'written', basePron: 'write', pastPron: 'wrote', ppPron: 'written' },
+            { base: 'eat', past: 'ate', pp: 'eaten', basePron: 'eat', pastPron: 'eight', ppPron: 'eaten' },
+            { base: 'drink', past: 'drank', pp: 'drunk', basePron: 'drink', pastPron: 'drank', ppPron: 'drunk' },
+            { base: 'think', past: 'thought', pp: 'thought', basePron: 'think', pastPron: 'thought', ppPron: 'thought' },
+            { base: 'buy', past: 'bought', pp: 'bought', basePron: 'buy', pastPron: 'bought', ppPron: 'bought' },
+            { base: 'bring', past: 'brought', pp: 'brought', basePron: 'bring', pastPron: 'brought', ppPron: 'brought' },
+            { base: 'teach', past: 'taught', pp: 'taught', basePron: 'teach', pastPron: 'taught', ppPron: 'taught' },
+            { base: 'tell', past: 'told', pp: 'told', basePron: 'tell', pastPron: 'told', ppPron: 'told' },
+            { base: 'find', past: 'found', pp: 'found', basePron: 'find', pastPron: 'found', ppPron: 'found' },
+            { base: 'put', past: 'put', pp: 'put', basePron: 'put', pastPron: 'put', ppPron: 'put' },
+            { base: 'begin', past: 'began', pp: 'begun', basePron: 'begin', pastPron: 'began', ppPron: 'begun' },
+            { base: 'speak', past: 'spoke', pp: 'spoken', basePron: 'speak', pastPron: 'spoke', ppPron: 'spoken' },
+            { base: 'leave', past: 'left', pp: 'left', basePron: 'leave', pastPron: 'left', ppPron: 'left' },
+            { base: 'feel', past: 'felt', pp: 'felt', basePron: 'feel', pastPron: 'felt', ppPron: 'felt' },
+            { base: 'keep', past: 'kept', pp: 'kept', basePron: 'keep', pastPron: 'kept', ppPron: 'kept' },
+        ];
+
+        function speak(text) {
+            speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US';
+            utterance.rate = 0.85;
+            utterance.pitch = 1;
+            utterance.volume = 1;
+            speechSynthesis.speak(utterance);
+        }
+
+        function createVerbCard(verb) {
+            return `
+            <div class="verb-card bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-bold text-gray-800 mb-4">${verb.base}</h2>
+                <div class="form base-form">
+                    <div class="verb-text">
+                        <p class="text-sm text-gray-600">Base Form (原形)</p>
+                        <p class="text-xl font-semibold">${verb.base}</p>
+                    </div>
+                    <button class="pronunciation-btn" onclick="speak('${verb.basePron}')">🔊</button>
+                </div>
+                <div class="form past-tense">
+                    <div class="verb-text">
+                        <p class="text-sm text-gray-600">Past Tense (过去式)</p>
+                        <p class="text-xl font-semibold">${verb.past}</p>
+                    </div>
+                    <button class="pronunciation-btn" onclick="speak('${verb.pastPron}')">🔊</button>
+                </div>
+                <div class="form past-participle">
+                    <div class="verb-text">
+                        <p class="text-sm text-gray-600">Past Participle (过去分词)</p>
+                        <p class="text-xl font-semibold">${verb.pp}</p>
+                    </div>
+                    <button class="pronunciation-btn" onclick="speak('${verb.ppPron}')">🔊</button>
+                </div>
+            </div>`;
+        }
+
+        document.getElementById('verbGrid').innerHTML = verbs.map(createVerbCard).join('');
+    </script>
+<script>window.parent.postMessage({ action: "ready" }, "*"); 
+ 
+window.console = new Proxy(console, {
+  get(target, prop) {
+    if (['log', 'warn', 'error'].includes(prop)) {
+      return new Proxy(target[prop], {
+        apply(fn, thisArg, args) {
+          fn.apply(thisArg, args);
+          window.parent.postMessage({ action: 'console', 
+            type: prop, 
+            args: args.map((arg) => {
+              try {
+                return JSON.stringify(arg).replace(/^["']|["']$/g, '');
+              } catch (e) {
+                return arg;
+              }
+            }) 
+          }, '*');
+        }
+      });
+    }
+    return target[prop];
+  }
+});
+</script></body>
+</html>
